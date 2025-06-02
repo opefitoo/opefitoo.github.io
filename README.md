@@ -11,7 +11,7 @@ Modern website for Opefitoo (Open Financial Tools), providing software solutions
 
 ## Docker Deployment
 
-The website can be easily deployed using Docker with the included `docker-compose.yml` file.
+The website can be easily deployed using Docker with the included `docker-compose.yml` file. We use Traefik as a modern reverse proxy and Apache HTTPD to serve the static files.
 
 ### Prerequisites
 
@@ -33,7 +33,9 @@ The website can be easily deployed using Docker with the included `docker-compos
 
 3. Access the website at http://localhost:3001
 
-4. To stop the server:
+4. Access the Traefik dashboard at http://localhost:8080 (optional)
+
+5. To stop the server:
    ```bash
    docker-compose down
    ```

@@ -1,16 +1,31 @@
 version: '3'
 
 services:
-  web:
-    image: nginx:alpine
+  traefik:
+    image: traefik:v2.10
+    container_name: opefitoo-traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
     ports:
       - "3001:80"
+      - "8080:8080" # Traefik dashboard (optional)
     volumes:
-      - .:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: always
-    environment:
-      - NGINX_HOST=opefitoo.org
-      - NGINX_PORT=3001
+      
+  web:
+    image: httpd:alpine
+    container_name: opefitoo-web
+    volumes:
+      - ./:/usr/local/apache2/htdocs/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.opefitoo.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.opefitoo.entrypoints=web"
+    restart: always
     
   # Optional SSL service with Certbot if you need HTTPS
   # certbot:

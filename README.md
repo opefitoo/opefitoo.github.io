@@ -31,7 +31,7 @@ The website can be easily deployed using Docker with the included `docker-compos
    docker-compose up -d
    ```
 
-3. Access the website at http://localhost:8080
+3. Access the website at http://localhost:3001
 
 4. To stop the server:
    ```bash

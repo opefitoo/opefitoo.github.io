@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - .:/usr/share/nginx/html
+    restart: always
+    environment:
+      - NGINX_HOST=opefitoo.org
+      - NGINX_PORT=80
+    
+  # Optional SSL service with Certbot if you need HTTPS
+  # certbot:
+  #   image: certbot/certbot
+  #   volumes:
+  #     - ./data/certbot/conf:/etc/letsencrypt
+  #     - ./data/certbot/www:/var/www/certbot
+  #   command: certonly --webroot -w /var/www/certbot --force-renewal --email info@opefitoo.com -d opefitoo.org --agree-tos

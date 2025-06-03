@@ -1,10 +1,16 @@
 version: '3'
 
 services:
-  web:
-    build: .
+  opefitoo:
+    image: opefitoo-site
     container_name: opefitoo-web
     ports:
-      - "3001:3001"
-    restart: unless-stopped   
+      - "3001:80"  # Interne vers host
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.opefitoo.rule=Host(`opefitoo.com`,`www.opefitoo.com`)"
+      - "traefik.http.routers.opefitoo.entrypoints=websecure"
+      - "traefik.http.routers.opefitoo.tls.certresolver=myresolver"
+      - "traefik.http.services.opefitoo.loadbalancer.server.port=80"
+
  

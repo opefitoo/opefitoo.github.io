@@ -1,45 +1,15 @@
 version: '3'
 
 services:
-  traefik:
-    image: traefik:v2.10
-    container_name: opefitoo-traefik
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--providers.file.directory=/etc/traefik/dynamic"
-      - "--certificatesresolvers.letsencrypt.acme.email=info@opefitoo.com"
-      - "--certificatesresolvers.letsencrypt.acme.storage=/etc/traefik/acme/acme.json"
-      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+  web:
+    image: nginx:alpine
+    container_name: opefitoo-web
     ports:
       - "3001:80"
-      - "3443:443"
-      - "8081:8080" # Traefik dashboard (optional)
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik:/etc/traefik/dynamic:ro
-      - ./traefik/acme:/etc/traefik/acme
+      - ./:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     restart: always
-      
-  web:
-    image: httpd:alpine
-    container_name: opefitoo-web
-    volumes:
-      - ./:/usr/local/apache2/htdocs/
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.opefitoo-local.rule=PathPrefix(`/`)"
-      - "traefik.http.routers.opefitoo-local.entrypoints=web"
-      - "traefik.http.routers.opefitoo-local.service=opefitoo-service@docker"
-      - "traefik.http.services.opefitoo-service.loadbalancer.server.port=80"
-    restart: always
-    
-  # Optional SSL service with Certbot if you need HTTPS
-  # certbot:
-  #   image: certbot/certbot
   #   volumes:
   #     - ./data/certbot/conf:/etc/letsencrypt
   #     - ./data/certbot/www:/var/www/certbot

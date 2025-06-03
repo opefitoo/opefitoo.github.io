@@ -1,8 +1,0 @@
-# Dynamic configuration
-certificatesResolvers:
-  letsencrypt:
-    acme:
-      email: info@opefitoo.com
-      storage: /etc/traefik/acme/acme.json
-      httpChallenge:
-        entryPoint: web

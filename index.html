@@ -1,67 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mehdi Benammar – Opefitoo</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 2rem;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fffdf8;
-      color: #2b2b2b;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+---
+layout: default
+title: Home
+---
 
-    header img {
-      width: 140px;
-      margin-bottom: 1rem;
-    }
+<section class="home-intro">
+  <h2>Bienvenue</h2>
+  <p>Développeur indépendant spécialisé dans les applications web et les solutions pour les établissements médicaux.</p>
+  
+  <p>Ce site est construit avec Jekyll et sert de plateforme pour partager mes réflexions, projets et expériences.</p>
+  
+  <p>Pour me contacter : <a href="mailto:mehdi@benammar.com">mehdi@benammar.com</a></p>
+</section>
 
-    h1 {
-      font-size: 2rem;
-      color: #e39100;
-    }
-
-    p {
-      max-width: 600px;
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
-
-    a {
-      color: #e39100;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <img src="logo-opefitoo.png" alt="Opefitoo Logo" />
-    <h1>Mehdi Benammar</h1>
-    <p>Développeur indépendant spécialisé dans les applications web et les solutions pour les établissements médicaux.</p>
-  </header>
-
-  <main>
-    <p>Pour me contacter : <a href="mailto:mehdi@benammar.com">mehdi@benammar.com</a></p>
-  </main>
-
-  <footer>
-    &copy; 2025 Opefitoo — Tous droits réservés
-  </footer>
-
-</body>
-</html>
+<section class="recent-posts">
+  <h2>Articles Récents</h2>
+  
+  <ul class="post-list">
+    {% for post in site.posts limit:3 %}
+    <li>
+      <h3>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  
+  <p><a href="{{ '/blog/' | relative_url }}">Voir tous les articles &rarr;</a></p>
+</section>
 

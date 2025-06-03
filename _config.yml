@@ -1,0 +1,21 @@
+title: Mehdi Benammar – Opefitoo
+description: Personal website of Mehdi Benammar
+url: "https://opefitoo.org"
+baseurl: ""
+email: info@opefitoo.com
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md

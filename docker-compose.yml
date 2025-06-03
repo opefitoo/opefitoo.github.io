@@ -1,8 +1,7 @@
 version: '3'
 
 services:
-  opefitoo:
-    image: opefitoo-site
+  opefitoo-site:
     container_name: opefitoo-web
     ports:
       - "3001:80"  # Interne vers host

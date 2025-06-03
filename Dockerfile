@@ -7,5 +7,5 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy your website content into nginx web directory
 COPY . /usr/share/nginx/html
 
-# Expose port 80
+# Expose port 3001
 EXPOSE 3001

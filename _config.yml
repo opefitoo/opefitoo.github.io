@@ -1,8 +1,8 @@
 title: Mehdi Benammar – Opefitoo
 description: Personal website of Mehdi Benammar
-url: "https://opefitoo.org"
+url: "https://opefitoo.github.io"
 baseurl: ""
-email: info@opefitoo.com
+email: mehdi@benammar.com
 
 # Build settings
 markdown: kramdown
@@ -10,6 +10,31 @@ permalink: pretty
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Social media
+social:
+  linkedin: mehdi-benammar
+  github: opefitoo
+  email: mehdi@benammar.com
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
 
 # Exclude from processing
 exclude:
@@ -19,3 +44,7 @@ exclude:
   - vendor
   - .gitignore
   - README.md
+  - docker-compose.yml
+  - Dockerfile
+  - nginx
+  - certbot

@@ -30,7 +30,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.opefitoo-local.rule=PathPrefix(`/`)"
       - "traefik.http.routers.opefitoo-local.entrypoints=web"
-      - "traefik.http.services.opefitoo-local.loadbalancer.server.port=80"
+      - "traefik.http.routers.opefitoo-local.service=opefitoo-service@docker"
+      - "traefik.http.services.opefitoo-service.loadbalancer.server.port=80"
     restart: always
     
   # Optional SSL service with Certbot if you need HTTPS

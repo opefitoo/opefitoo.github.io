@@ -1,0 +1,14 @@
+<header class="wrap bar">
+  <a class="brand" href="/">opefitoo</a>
+  <nav class="nav" aria-label="Menu">
+    <a href="/apps/" data-i18n="nav-apps">Applications</a>
+    <a href="/about/" data-i18n="nav-about"{% if page.url == "/about/" %} aria-current="page"{% endif %}>À propos</a>
+    <a href="/blog/"{% if page.url == "/blog/" or page.layout == "post" %} aria-current="page"{% endif %}>Blog</a>
+    <a class="cta" href="/contact/" data-i18n="nav-contact">Contact</a>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
+    </div>
+  </nav>
+</header>

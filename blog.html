@@ -1,0 +1,85 @@
+---
+layout: null
+permalink: /blog/
+title: Blog
+---
+<!doctype html>
+<html lang="fr">
+<head>
+{% include site-head.html %}
+<title>Blog | Opefitoo</title>
+<meta name="description" content="Notes de terrain d’Opefitoo : logiciels de santé au Luxembourg, soins à domicile, cabinets médicaux.">
+<link rel="canonical" href="https://opefitoo.com/blog/">
+<style>
+/* Layout: a large title, then posts as full-width rows (date left, title right); with no posts, one empty-state block that points somewhere useful. */
+.head { padding-block: clamp(32px, 5vw, 72px) clamp(28px, 4vw, 48px); }
+h1 { font-size: clamp(56px, 9vw, 148px); line-height: .86; margin: 0; }
+.head p { font-size: clamp(18px, 1.5vw, 21px); color: var(--ink-2); margin: 22px 0 0; max-width: 46ch; }
+.posts { list-style: none; margin: 0; padding: 0 0 clamp(56px, 7vw, 104px); }
+.posts li { border-top: 1.5px solid var(--line); }
+.posts li:last-child { border-bottom: 1.5px solid var(--line); }
+.posts a { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 7fr); gap: 24px; padding: 28px 0; text-decoration: none; }
+.posts time { font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; padding-top: 6px; }
+.posts h2 { margin: 0; font-size: clamp(28px, 3.4vw, 48px); line-height: 1; }
+.posts p { margin: 10px 0 0; color: var(--ink-2); max-width: 62ch; }
+.posts a:hover h2 { color: var(--cobalt); }
+.empty { margin-bottom: clamp(56px, 7vw, 104px); padding: clamp(28px, 4vw, 56px); border-radius: 26px; background: var(--cobalt); color: var(--white); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px; }
+.empty h2 { margin: 0; font-size: clamp(34px, 4.4vw, 64px); line-height: .95; max-width: 16ch; }
+.empty p { margin: 14px 0 0; max-width: 44ch; color: #DCE4FF; }
+.empty .btn { border-color: var(--white); }
+.empty .btn.primary { background: var(--white); color: var(--ink); }
+.empty .btn.primary:hover { background: var(--saffron); border-color: var(--saffron); }
+.empty .btn:not(.primary):hover { background: rgba(255,255,255,.12); }
+@media (max-width: 640px) { .posts a { grid-template-columns: 1fr; gap: 6px; } .posts time { padding: 0; } }
+</style>
+</head>
+<body>
+{% include site-bar.html %}
+
+<main class="wrap">
+  <header class="head">
+    <h1 class="display" data-i18n="h1">Notes de terrain</h1>
+    <p data-i18n="lede">Ce que j’apprends en construisant des logiciels pour les soignants au Luxembourg.</p>
+  </header>
+
+  {% if site.posts.size > 0 %}
+  <ul class="posts">
+    {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d.%m.%Y" }}</time>
+        <div><h2 class="display">{{ post.title }}</h2><p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p></div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <section class="empty">
+    <div>
+      <h2 class="display" data-i18n="e-h">Le premier article est en cours d’écriture.</h2>
+      <p data-i18n="e-p">En attendant, les applications montrent ce que je construis, et je réponds volontiers à vos questions.</p>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="/apps/" data-i18n="e-apps" data-umami-event="blog-apps">Voir les applications</a>
+      <a class="btn" href="/contact/" data-i18n="e-contact" data-umami-event="blog-contact">Me contacter</a>
+    </div>
+  </section>
+  {% endif %}
+</main>
+
+{% include site-footer.html %}
+<script>
+window.OPE_T = {
+  en: { "nav-apps": "Apps", "nav-about": "About", "nav-contact": "Contact", h1: "Field notes",
+    lede: "What I learn building software for carers in Luxembourg.",
+    "e-h": "The first post is being written.", "e-p": "In the meantime, the apps show what I build, and I’m happy to answer your questions.",
+    "e-apps": "See the apps", "e-contact": "Contact me" },
+  de: { "nav-apps": "Apps", "nav-about": "Über mich", "nav-contact": "Kontakt", h1: "Notizen aus der Praxis",
+    lede: "Was ich lerne, während ich Software für Pflegekräfte in Luxemburg baue.",
+    "e-h": "Der erste Artikel entsteht gerade.", "e-p": "Bis dahin zeigen die Apps, was ich baue, und ich beantworte gern Ihre Fragen.",
+    "e-apps": "Apps ansehen", "e-contact": "Kontakt aufnehmen" }
+};
+</script>
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

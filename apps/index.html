@@ -47,6 +47,7 @@ button { font: inherit; color: inherit; }
 .bar { position: fixed; z-index: 20; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: calc(env(safe-area-inset-top, 0px) + 14px) max(20px, env(safe-area-inset-right, 0px)) 14px max(20px, env(safe-area-inset-left, 0px)); pointer-events: none; mix-blend-mode: normal; }
 .bar > * { pointer-events: auto; }
 .brand { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; text-decoration: none; color: inherit; padding: 6px 12px; border-radius: 999px; background: rgba(251,252,254,.82); color: var(--ink); backdrop-filter: blur(10px); }
+.brand img { display: block; height: 26px; width: auto; }
 .langs { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(251,252,254,.82); backdrop-filter: blur(10px); color: var(--ink); }
 .langs button { border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
 .langs button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
@@ -221,7 +222,7 @@ button { font: inherit; color: inherit; }
 <body>
 
 <header class="bar">
-  <a class="brand" href="/">opefitoo</a>
+  <a class="brand" href="/"><img src="/assets/images/logo-opefitoo.png" alt="opefitoo" width="117" height="32"></a>
   <div class="langs" role="group" aria-label="Language">
     <button type="button" data-lang="fr" aria-pressed="true">FR</button>
     <button type="button" data-lang="en" aria-pressed="false">EN</button>

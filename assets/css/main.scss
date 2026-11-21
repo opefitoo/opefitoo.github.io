@@ -102,3 +102,44 @@ footer {
     }
   }
 }
+
+.contact {
+  h3 { margin-top: 2.5rem; }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 720px;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    padding: 1.25rem 1rem;
+    border: 2px solid lighten($primary-color, 35%);
+    border-radius: 14px;
+    background: #fff;
+    color: $text-color;
+    font-weight: normal;
+    transition: border-color .2s, transform .2s;
+
+    &:hover, &:focus-visible {
+      border-color: $primary-color;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+  }
+
+  .contact-label { color: $dark-gray; font-size: .9rem; }
+  .contact-value { color: $primary-color; font-weight: bold; word-break: break-word; }
+
+  .contact-hints {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}

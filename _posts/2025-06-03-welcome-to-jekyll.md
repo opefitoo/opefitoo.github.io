@@ -31,4 +31,4 @@ Stay tuned for more updates as I continue to improve this site!
 
 ## Get in Touch
 
-If you have any questions or suggestions, feel free to [contact me](mailto:mehdi@benammar.com).
+If you have any questions or suggestions, feel free to [contact me](mailto:contact@opefitoo.com).

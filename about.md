@@ -20,7 +20,7 @@ I am Mehdi Benammar, an independent developer specializing in web applications a
 
 Feel free to reach out if you have any questions or would like to discuss a potential project:
 
-- Email: [mehdi@benammar.com](mailto:mehdi@benammar.com)
+- Email: [contact@opefitoo.com](mailto:contact@opefitoo.com)
 - LinkedIn: [Mehdi Benammar](https://linkedin.com/in/mehdi-benammar)
 - GitHub: [opefitoo](https://github.com/opefitoo)
 

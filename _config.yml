@@ -2,7 +2,7 @@ title: Mehdi Benammar – Opefitoo
 description: Personal website of Mehdi Benammar
 url: "https://opefitoo.github.io"
 baseurl: ""
-email: mehdi@benammar.com
+email: contact@opefitoo.com
 
 # Build settings
 markdown: kramdown
@@ -16,7 +16,7 @@ plugins:
 social:
   linkedin: mehdi-benammar
   github: opefitoo
-  email: mehdi@benammar.com
+  email: contact@opefitoo.com
 
 # Collections
 collections:
@@ -48,3 +48,9 @@ exclude:
   - Dockerfile
   - nginx
   - certbot
+
+# Umami analytics (self-hosted). Fill website_id with the UUID from
+# umami.opefitoo.com > Settings > Websites; empty means no tracking script.
+umami:
+  script: "https://umami.opefitoo.com/script.js"
+  website_id: "62061a13-f1c4-4378-b176-0e3f064a1842"

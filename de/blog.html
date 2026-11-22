@@ -44,9 +44,10 @@ h1 { font-size: clamp(56px, 9vw, 148px); line-height: .86; margin: 0; }
     <p data-i18n="lede">Was ich lerne, während ich Software für Pflegekräfte in Luxemburg baue.</p>
   </header>
 
-  {% if site.posts.size > 0 %}
+  {% assign lg = page.lang | default: "fr" %}{% assign posts = site.posts | where: "lang", lg %}
+  {% if posts.size > 0 %}
   <ul class="posts">
-    {% for post in site.posts %}
+    {% for post in posts %}
     <li>
       <a href="{{ post.url | relative_url }}">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d.%m.%Y" }}</time>

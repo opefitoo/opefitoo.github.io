@@ -1,5 +1,9 @@
 <!doctype html>
-<html lang="fr">
+{%- assign lg = page.lang | default: "fr" -%}{%- if lg == "fr" -%}{%- assign pre = "" -%}{%- else -%}{%- assign pre = "/" | append: lg -%}{%- endif -%}
+{%- if lg == "de" -%}{%- assign t_back = "Alle Artikel" -%}{%- assign t_a = "Ein Projekt?" -%}{%- assign t_b = "Sprechen wir darüber." -%}{%- assign t_cta = "Kontakt aufnehmen" -%}{%- assign loc = "de_DE" -%}
+{%- elsif lg == "en" -%}{%- assign t_back = "All posts" -%}{%- assign t_a = "A project?" -%}{%- assign t_b = "Let’s talk." -%}{%- assign t_cta = "Contact me" -%}{%- assign loc = "en_GB" -%}
+{%- else -%}{%- assign t_back = "Tous les articles" -%}{%- assign t_a = "Un projet ?" -%}{%- assign t_b = "Parlons-en." -%}{%- assign t_cta = "Me contacter" -%}{%- assign loc = "fr_FR" -%}{%- endif -%}
+<html lang="{{ lg }}">
 <head>
 {% include site-head.html %}
 <title>{{ page.title }} | Opefitoo</title>
@@ -10,6 +14,10 @@
 <meta property="og:image" content="https://opefitoo.com/assets/apps/salaire-home.jpg">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:locale" content="{{ loc }}">
+{%- if page.i18n_key %}{% assign sib = site.posts | where: "i18n_key", page.i18n_key %}{% for p in sib %}
+<link rel="alternate" hreflang="{{ p.lang }}" href="{{ p.url | absolute_url }}">{% if p.lang == "fr" %}
+<link rel="alternate" hreflang="x-default" href="{{ p.url | absolute_url }}">{% endif %}{% endfor %}{% endif %}
 <style>
 .post { max-width: 760px; padding-block: clamp(32px, 5vw, 72px) clamp(56px, 7vw, 104px); }
 .back { font-weight: 600; text-decoration: none; color: var(--ink-2); }
@@ -32,13 +40,14 @@
 .body tbody tr:hover { background: var(--white); }
 .table-scroll { overflow-x: auto; }
 .body > p:first-child { font-size: 22px; line-height: 1.5; }
+@media (max-width: 560px) { .body table { font-size: 14.5px; } .body th, .body td { padding: 9px 6px; } .body th { font-size: 13px; hyphens: auto; } .body td:first-child, .body th:first-child { padding-left: 0; } .body td:last-child, .body th:last-child { padding-right: 0; } .body > p:first-child { font-size: 20px; } }
 </style>
 </head>
 <body>
 {% include site-bar.html %}
 <main class="wrap">
   <article class="post">
-    <a class="back" href="/blog/" data-i18n="back">Tous les articles</a>
+    <a class="back" href="{{ pre }}/blog/">{{ t_back }}</a>
     <h1 class="display">{{ page.title }}</h1>
     <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d.%m.%Y" }}</time>{% if page.author %}, {{ page.author }}{% endif %}</p>
     <div class="body">{{ content }}</div>
@@ -46,17 +55,10 @@
 </main>
 <section class="end">
   <div class="wrap">
-    <h2><span data-i18n="end-a">Un projet ?</span> <span data-i18n="end-b">Parlons-en.</span></h2>
-    <div class="actions"><a class="btn primary" href="/contact/" data-i18n="end-cta" data-umami-event="post-contact">Me contacter</a></div>
+    <h2><span>{{ t_a }}</span> <span>{{ t_b }}</span></h2>
+    <div class="actions"><a class="btn primary" href="{{ pre }}/contact/" data-umami-event="post-contact">{{ t_cta }}</a></div>
   </div>
 </section>
 {% include site-footer.html %}
-<script>
-window.OPE_T = {
-  en: { "nav-apps": "Apps", "nav-about": "About", "nav-contact": "Contact", back: "All posts", "end-a": "A project?", "end-b": "Let’s talk.", "end-cta": "Contact me" },
-  de: { "nav-apps": "Apps", "nav-about": "Über mich", "nav-contact": "Kontakt", back: "Alle Artikel", "end-a": "Ein Projekt?", "end-b": "Sprechen wir darüber.", "end-cta": "Kontakt aufnehmen" }
-};
-</script>
-<script src="/assets/js/site.js"></script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 ---
+lang: fr
+i18n_key: nurse-salary-2026
 title: "Salaire d’un infirmier au Luxembourg en 2026 : hôpital ou soins à domicile"
 description: "Combien gagne un infirmier diplômé au Luxembourg en 2026 ? Les grilles CCT FHL (hôpital) et CCT SAS (soins à domicile, maisons de soins) année par année, et comment les lire."
 author: Mehdi Benammar

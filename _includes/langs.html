@@ -1,6 +1,10 @@
 {%- assign lg = page.lang | default: 'fr' -%}{%- assign ref = page.ref | default: '/blog/' -%}
+{%- assign u_fr = ref -%}{%- assign u_en = '/en' | append: ref -%}{%- assign u_de = '/de' | append: ref -%}
+{%- if page.i18n_key -%}{%- assign sib = site.posts | where: "i18n_key", page.i18n_key -%}
+{%- for p in sib -%}{%- if p.lang == 'fr' -%}{%- assign u_fr = p.url -%}{%- elsif p.lang == 'en' -%}{%- assign u_en = p.url -%}{%- elsif p.lang == 'de' -%}{%- assign u_de = p.url -%}{%- endif -%}{%- endfor -%}
+{%- endif -%}
 <div class="langs" role="group" aria-label="Language">
-      <a href="{{ ref }}" hreflang="fr" lang="fr"{% if lg == 'fr' %} aria-current="true"{% endif %}>FR</a>
-      <a href="/en{{ ref }}" hreflang="en" lang="en"{% if lg == 'en' %} aria-current="true"{% endif %}>EN</a>
-      <a href="/de{{ ref }}" hreflang="de" lang="de"{% if lg == 'de' %} aria-current="true"{% endif %}>DE</a>
+      <a href="{{ u_fr }}" hreflang="fr" lang="fr"{% if lg == 'fr' %} aria-current="true"{% endif %}>FR</a>
+      <a href="{{ u_en }}" hreflang="en" lang="en"{% if lg == 'en' %} aria-current="true"{% endif %}>EN</a>
+      <a href="{{ u_de }}" hreflang="de" lang="de"{% if lg == 'de' %} aria-current="true"{% endif %}>DE</a>
     </div>

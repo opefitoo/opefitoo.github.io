@@ -1,0 +1,9 @@
+{%- assign lg = page.lang | default: 'fr' -%}
+<link rel="canonical" href="{{ site.url }}{% if lg != 'fr' %}/{{ lg }}{% endif %}{{ page.ref }}">
+<meta property="og:url" content="{{ site.url }}{% if lg != 'fr' %}/{{ lg }}{% endif %}{{ page.ref }}">
+<meta property="og:locale" content="{% if lg == 'en' %}en_GB{% elsif lg == 'de' %}de_DE{% else %}fr_FR{% endif %}">
+<meta property="og:site_name" content="Opefitoo">
+<link rel="alternate" hreflang="fr" href="{{ site.url }}{{ page.ref }}">
+<link rel="alternate" hreflang="en" href="{{ site.url }}/en{{ page.ref }}">
+<link rel="alternate" hreflang="de" href="{{ site.url }}/de{{ page.ref }}">
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.ref }}">

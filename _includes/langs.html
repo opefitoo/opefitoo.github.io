@@ -1,0 +1,6 @@
+{%- assign lg = page.lang | default: 'fr' -%}{%- assign ref = page.ref | default: '/blog/' -%}
+<div class="langs" role="group" aria-label="Language">
+      <a href="{{ ref }}" hreflang="fr" lang="fr"{% if lg == 'fr' %} aria-current="true"{% endif %}>FR</a>
+      <a href="/en{{ ref }}" hreflang="en" lang="en"{% if lg == 'en' %} aria-current="true"{% endif %}>EN</a>
+      <a href="/de{{ ref }}" hreflang="de" lang="de"{% if lg == 'de' %} aria-current="true"{% endif %}>DE</a>
+    </div>

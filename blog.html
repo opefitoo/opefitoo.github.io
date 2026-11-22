@@ -1,4 +1,6 @@
 ---
+ref: /blog/
+lang: fr
 layout: null
 permalink: /blog/
 title: Blog
@@ -8,8 +10,8 @@ title: Blog
 <head>
 {% include site-head.html %}
 <title>Blog | Opefitoo</title>
+{% include hreflang.html %}
 <meta name="description" content="Notes de terrain d’Opefitoo : logiciels de santé au Luxembourg, soins à domicile, cabinets médicaux.">
-<link rel="canonical" href="https://opefitoo.com/blog/">
 <style>
 /* Layout: a large title, then posts as full-width rows (date left, title right); with no posts, one empty-state block that points somewhere useful. */
 .head { padding-block: clamp(32px, 5vw, 72px) clamp(28px, 4vw, 48px); }

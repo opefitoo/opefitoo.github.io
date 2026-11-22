@@ -27,8 +27,8 @@ button { font: inherit; color: inherit; }
 .nav a.cta { background: var(--ink); color: var(--white); }
 .nav a.cta:hover { background: var(--cobalt); }
 .langs { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: var(--white); }
-.langs button { border: 0; background: transparent; padding: 6px 11px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
-.langs button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+.langs a { text-decoration: none; border: 0; background: transparent; padding: 6px 11px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.langs a[aria-current="true"] { background: var(--ink); color: var(--white); }
 
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn { display: inline-block; padding: 14px 24px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--ink); }

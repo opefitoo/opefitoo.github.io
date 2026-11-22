@@ -1,4 +1,6 @@
 ---
+ref: /apps/
+lang: fr
 layout: null
 permalink: /apps/
 ---
@@ -11,11 +13,11 @@ permalink: /apps/
 <meta property="og:title" content="Opefitoo, logiciels pour la santé au Luxembourg">
 <meta property="og:description" content="Nuno, Nuno Mobile, MediNote et Salaire Santé.">
 <meta property="og:image" content="https://opefitoo.com/assets/apps/medinot-patient.jpg">
-<meta property="og:url" content="https://opefitoo.com/apps/">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
 {% include umami.html %}
-<title>Opefitoo Apps</title>
+<title>Nuno, Nuno Mobile, MediNote, Salaire Santé | Opefitoo</title>
+{% include hreflang.html %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
@@ -49,8 +51,8 @@ button { font: inherit; color: inherit; }
 .brand { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; text-decoration: none; color: inherit; padding: 6px 12px; border-radius: 999px; background: rgba(251,252,254,.82); color: var(--ink); backdrop-filter: blur(10px); }
 .brand img { display: block; height: 26px; width: auto; }
 .langs { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(251,252,254,.82); backdrop-filter: blur(10px); color: var(--ink); }
-.langs button { border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
-.langs button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+.langs a { text-decoration: none; border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.langs a[aria-current="true"] { background: var(--ink); color: var(--white); }
 
 /* side progress */
 .dots { position: fixed; z-index: 20; right: max(18px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; }
@@ -223,11 +225,7 @@ button { font: inherit; color: inherit; }
 
 <header class="bar">
   <a class="brand" href="/"><img src="/assets/images/logo-opefitoo.png" alt="opefitoo" width="117" height="32"></a>
-  <div class="langs" role="group" aria-label="Language">
-    <button type="button" data-lang="fr" aria-pressed="true">FR</button>
-    <button type="button" data-lang="en" aria-pressed="false">EN</button>
-    <button type="button" data-lang="de" aria-pressed="false">DE</button>
-  </div>
+  {% include langs.html %}
 </header>
 <nav class="dots" aria-label="Chapitres">
   <a href="#start" aria-label="Opefitoo"></a><a href="#nuno" aria-label="Nuno"></a><a href="#mobile" aria-label="Nuno Mobile"></a><a href="#medinot" aria-label="MediNote"></a><a href="#salaire" aria-label="Salaire Santé"></a><a href="#fin" aria-label="Contact"></a>
@@ -527,13 +525,9 @@ button { font: inherit; color: inherit; }
     lang = T[l] ? l : 'fr';
     document.documentElement.lang = lang;
     nodes.forEach(n => { const v = T[lang][n.dataset.i18n]; if (v != null) n.textContent = v; });
-    document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     setSalary(false);
-    try { localStorage.setItem('opefitoo-lang', lang); } catch (e) {}
   }
-  document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-  let saved = null; try { saved = localStorage.getItem('opefitoo-lang'); } catch (e) {}
-  setLang(saved || 'fr');
+  setLang(document.documentElement.lang);
 
   /* planning board (fictional staff) */
   const grid = document.getElementById('grid');

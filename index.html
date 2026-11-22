@@ -1,4 +1,6 @@
 ---
+ref: /
+lang: fr
 layout: null
 ---
 <!doctype html>
@@ -7,12 +9,12 @@ layout: null
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Opefitoo | Logiciels pour la santé au Luxembourg</title>
+{% include hreflang.html %}
+{% include jsonld.html %}
 <meta name="description" content="Opefitoo conçoit Nuno, Nuno Mobile, MediNote et Salaire Santé : des logiciels pour les soins à domicile, les infirmiers libéraux, les cabinets médicaux et les salariés de la santé au Luxembourg.">
 <meta property="og:title" content="Opefitoo, logiciels pour la santé au Luxembourg">
 <meta property="og:description" content="Nuno, Nuno Mobile, MediNote et Salaire Santé.">
 <meta property="og:image" content="https://opefitoo.com/assets/apps/medinot-patient.jpg">
-<meta property="og:url" content="https://opefitoo.com/">
-<link rel="canonical" href="https://opefitoo.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
 <link rel="manifest" href="/assets/favicons/site.webmanifest">
@@ -47,8 +49,8 @@ button { font: inherit; color: inherit; }
 .nav a.cta { background: var(--ink); color: var(--white); }
 .nav a.cta:hover { background: var(--cobalt); }
 .langs { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: var(--white); }
-.langs button { border: 0; background: transparent; padding: 6px 11px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
-.langs button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+.langs a { text-decoration: none; border: 0; background: transparent; padding: 6px 11px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.langs a[aria-current="true"] { background: var(--ink); color: var(--white); }
 
 /* hero */
 .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 80px); align-items: center; padding-block: clamp(32px, 5vw, 72px) clamp(48px, 7vw, 110px); }
@@ -135,11 +137,7 @@ footer a:hover { color: var(--white); }
     <a href="/about/" data-i18n="nav-about">À propos</a>
     <a href="/blog/">Blog</a>
     <a class="cta" href="/contact/" data-i18n="nav-contact">Contact</a>
-    <div class="langs" role="group" aria-label="Language">
-      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" data-lang="de" aria-pressed="false">DE</button>
-    </div>
+    {% include langs.html %}
   </nav>
 </header>
 
@@ -255,13 +253,8 @@ footer a:hover { color: var(--white); }
     txt.forEach(n => { const v = T[lang][n.dataset.i18n] ?? T.fr[n.dataset.i18n]; n.textContent = v; });
     html.forEach(n => { n.innerHTML = T[lang][n.dataset.i18nHtml] ?? T.fr[n.dataset.i18nHtml]; });
     amt.textContent = new Intl.NumberFormat(LOC[lang], { style: 'currency', currency: 'EUR' }).format(10859.47);
-    document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    try { localStorage.setItem('opefitoo-lang', lang); } catch (e) {}
   }
-  document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-  let saved = null; try { saved = localStorage.getItem('opefitoo-lang'); } catch (e) {}
-  if (!saved) { const n = (navigator.language || 'fr').slice(0, 2); saved = T[n] ? n : 'fr'; }
-  setLang(saved);
+  setLang(document.documentElement.lang);
 
   /* each tile tilts toward the pointer */
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.tile').forEach(t => {

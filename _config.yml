@@ -38,6 +38,7 @@ defaults:
 
 # Exclude from processing
 exclude:
+  - scripts
   - Gemfile
   - Gemfile.lock
   - node_modules

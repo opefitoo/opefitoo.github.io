@@ -1,6 +1,8 @@
+{%- assign lg = page.lang | default: "fr" -%}{%- if lg == "fr" -%}{%- assign pre = "" -%}{%- else -%}{%- assign pre = "/" | append: lg -%}{%- endif -%}
+{%- if lg == "de" -%}{%- assign l_apps = "Apps" -%}{%- assign l_about = "Über mich" -%}{%- assign l_contact = "Kontakt" -%}{%- elsif lg == "en" -%}{%- assign l_apps = "Apps" -%}{%- assign l_about = "About" -%}{%- assign l_contact = "Contact" -%}{%- else -%}{%- assign l_apps = "Applications" -%}{%- assign l_about = "À propos" -%}{%- assign l_contact = "Contact" -%}{%- endif -%}
 <footer>
   <div class="wrap">
     <span>© {{ site.time | date: '%Y' }} Opefitoo, Luxembourg</span>
-    <span><a href="/apps/" data-i18n="nav-apps">Applications</a><a href="/about/" data-i18n="nav-about">À propos</a><a href="/blog/">Blog</a><a href="/contact/" data-i18n="nav-contact">Contact</a></span>
+    <span><a href="{{ pre }}/apps/" data-i18n="nav-apps">{{ l_apps }}</a><a href="{{ pre }}/about/" data-i18n="nav-about">{{ l_about }}</a><a href="{{ pre }}/blog/">Blog</a><a href="{{ pre }}/contact/" data-i18n="nav-contact">{{ l_contact }}</a></span>
   </div>
 </footer>

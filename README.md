@@ -71,3 +71,10 @@ Post content goes here...
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Languages
+
+French pages are the source. `en/` and `de/` are generated from them and their inline
+translation dictionaries; after editing a French page, run:
+
+    PLAYWRIGHT=/path/to/node_modules/playwright node scripts/i18n.mjs

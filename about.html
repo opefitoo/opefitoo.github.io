@@ -1,4 +1,6 @@
 ---
+ref: /about/
+lang: fr
 layout: null
 permalink: /about/
 title: À propos
@@ -8,10 +10,9 @@ title: À propos
 <head>
 {% include site-head.html %}
 <title>À propos | Opefitoo</title>
+{% include hreflang.html %}
 <meta name="description" content="Mehdi Benammar, développeur indépendant au Luxembourg : Nuno, Nuno Mobile, MediNote et Salaire Santé, des logiciels construits avec les soignants depuis 2015.">
 <meta property="og:title" content="Mehdi Benammar, Opefitoo">
-<meta property="og:url" content="https://opefitoo.com/about/">
-<link rel="canonical" href="https://opefitoo.com/about/">
 <style>
 /* Layout: a name and a sentence; then the eleven years as a band chart where each product starts at its year and runs to today; then how I work, the tools, and where to reach me. */
 .intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 80px); align-items: end; padding-block: clamp(32px, 5vw, 72px) clamp(36px, 5vw, 64px); }

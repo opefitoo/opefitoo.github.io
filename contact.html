@@ -1,4 +1,6 @@
 ---
+ref: /contact/
+lang: fr
 layout: null
 permalink: /contact/
 ---
@@ -8,11 +10,11 @@ permalink: /contact/
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Contact | Opefitoo</title>
+{% include hreflang.html %}
 <meta name="description" content="Contacter Opefitoo pour une démo de Nuno, Nuno Mobile ou MediNote, ou une question sur Salaire Santé.">
 <meta property="og:title" content="Contacter Opefitoo">
 <meta property="og:description" content="Une démo de Nuno ou MediNote, une question sur Salaire Santé : écrivez-nous.">
 <meta property="og:image" content="https://opefitoo.com/assets/apps/medinot-patient.jpg">
-<meta property="og:url" content="https://opefitoo.com/contact/">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
 {% include umami.html %}
@@ -47,8 +49,8 @@ a { color: inherit; }
 .nav { display: flex; gap: 8px; align-items: center; }
 .nav a.apps { font-weight: 600; font-size: 15px; text-decoration: none; padding: 7px 14px; border-radius: 999px; border: 1.5px solid var(--line); }
 .langs { display: flex; gap: 2px; padding: 4px; }
-.langs button { border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
-.langs button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+.langs a { text-decoration: none; border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.langs a[aria-current="true"] { background: var(--ink); color: var(--white); }
 
 main { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 96px); align-items: start; padding-block: clamp(32px, 6vw, 80px) 64px; padding-left: max(clamp(20px, 6vw, 96px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(20px, 6vw, 96px), env(safe-area-inset-right, 0px)); max-width: 1400px; margin: 0 auto; }
 h1 { font-family: var(--display); font-weight: 800; font-size: clamp(56px, 8vw, 124px); line-height: .9; letter-spacing: -0.03em; margin: 0 0 24px; font-variation-settings: "wdth" 88; text-wrap: balance; }
@@ -104,11 +106,7 @@ footer { padding: 24px max(20px, env(safe-area-inset-left, 0px)) 32px; text-alig
   <a class="brand" href="/"><img src="/assets/images/logo-opefitoo.png" alt="opefitoo" width="117" height="32"></a>
   <div class="nav">
     <a class="apps" href="/apps/" data-i18n="nav-apps">Nos applications</a>
-    <div class="langs" role="group" aria-label="Language">
-      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" data-lang="de" aria-pressed="false">DE</button>
-    </div>
+    {% include langs.html %}
   </div>
 </header>
 
@@ -196,13 +194,8 @@ footer { padding: 24px max(20px, env(safe-area-inset-left, 0px)) 32px; text-alig
     document.documentElement.lang = lang;
     nodes.forEach(n => n.textContent = t(n.dataset.i18n));
     msg.placeholder = t('ph-msg');
-    document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    try { localStorage.setItem('opefitoo-lang', lang); } catch (e) {}
   }
-  document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-  let saved = null; try { saved = localStorage.getItem('opefitoo-lang'); } catch (e) {}
-  if (!saved) { const n = (navigator.language || 'fr').slice(0, 2); saved = T[n] ? n : 'fr'; }
-  setLang(saved);
+  setLang(document.documentElement.lang);
 
   /* the page takes the colour of the chosen app */
   const whoFor = { nuno: 'reseau', mobile: 'reseau', medinote: 'cabinet', salaire: 'salarie' };

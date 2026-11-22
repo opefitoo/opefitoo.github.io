@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://opefitoo.com/#org", "name": "Opefitoo", "url": "https://opefitoo.com/",
+      "logo": "https://opefitoo.com/assets/images/logo-opefitoo.png", "email": "{{ site.email }}",
+      "address": { "@type": "PostalAddress", "addressCountry": "LU" }, "areaServed": "LU",
+      "founder": { "@id": "https://opefitoo.com/#mehdi" },
+      "sameAs": ["https://www.linkedin.com/in/{{ site.social.linkedin }}/", "https://github.com/{{ site.social.github }}"] },
+    { "@type": "Person", "@id": "https://opefitoo.com/#mehdi", "name": "Mehdi Benammar", "jobTitle": "Software developer",
+      "url": "https://opefitoo.com/about/", "worksFor": { "@id": "https://opefitoo.com/#org" },
+      "sameAs": ["https://www.linkedin.com/in/{{ site.social.linkedin }}/", "https://github.com/{{ site.social.github }}"] },
+    { "@type": "SoftwareApplication", "name": "Nuno", "url": "https://opefitoo.com/apps/#nuno", "applicationCategory": "HealthApplication", "operatingSystem": "Web",
+      "description": "Care records, round planning, CNS billing, HR and quality for home care providers and independent nurses in Luxembourg.", "publisher": { "@id": "https://opefitoo.com/#org" } },
+    { "@type": "MobileApplication", "name": "Nuno Mobile", "url": "https://opefitoo.com/apps/#mobile", "applicationCategory": "HealthApplication", "operatingSystem": "iOS",
+      "description": "iPhone app for carers on their rounds: automatic clock-in, guided visits, offline mode.", "publisher": { "@id": "https://opefitoo.com/#org" } },
+    { "@type": "SoftwareApplication", "name": "MediNote", "url": "https://opefitoo.com/apps/#medinot", "applicationCategory": "HealthApplication", "operatingSystem": "Web",
+      "description": "Patient records, prescriptions, eCIT and direct CNS billing for medical practices in Luxembourg.", "publisher": { "@id": "https://opefitoo.com/#org" } },
+    { "@type": "WebApplication", "name": "Salaire Santé", "url": "https://salairesanteluxembourg.com/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web",
+      "description": "Gross and net salary simulator for healthcare staff in Luxembourg, based on their collective agreement.", "publisher": { "@id": "https://opefitoo.com/#org" } }
+  ]
+}
+</script>

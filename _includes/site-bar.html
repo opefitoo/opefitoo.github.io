@@ -1,14 +1,12 @@
+{%- assign lg = page.lang | default: "fr" -%}{%- if lg == "fr" -%}{%- assign pre = "" -%}{%- else -%}{%- assign pre = "/" | append: lg -%}{%- endif -%}
+{%- if lg == "de" -%}{%- assign l_apps = "Apps" -%}{%- assign l_about = "Über mich" -%}{%- assign l_contact = "Kontakt" -%}{%- elsif lg == "en" -%}{%- assign l_apps = "Apps" -%}{%- assign l_about = "About" -%}{%- assign l_contact = "Contact" -%}{%- else -%}{%- assign l_apps = "Applications" -%}{%- assign l_about = "À propos" -%}{%- assign l_contact = "Contact" -%}{%- endif -%}
 <header class="wrap bar">
-  <a class="brand" href="/"><img src="/assets/images/logo-opefitoo.png" alt="opefitoo" width="117" height="32"></a>
+  <a class="brand" href="{{ pre }}/"><img src="/assets/images/logo-opefitoo.png" alt="opefitoo" width="117" height="32"></a>
   <nav class="nav" aria-label="Menu">
-    <a href="/apps/" data-i18n="nav-apps">Applications</a>
-    <a href="/about/" data-i18n="nav-about"{% if page.url == "/about/" %} aria-current="page"{% endif %}>À propos</a>
-    <a href="/blog/"{% if page.url == "/blog/" or page.layout == "post" %} aria-current="page"{% endif %}>Blog</a>
-    <a class="cta" href="/contact/" data-i18n="nav-contact">Contact</a>
-    <div class="langs" role="group" aria-label="Language">
-      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" data-lang="de" aria-pressed="false">DE</button>
-    </div>
+    <a href="{{ pre }}/apps/" data-i18n="nav-apps">{{ l_apps }}</a>
+    <a href="{{ pre }}/about/" data-i18n="nav-about"{% if page.ref == "/about/" %} aria-current="page"{% endif %}>{{ l_about }}</a>
+    <a href="{{ pre }}/blog/"{% if page.ref == "/blog/" or page.layout == "post" %} aria-current="page"{% endif %}>Blog</a>
+    <a class="cta" href="{{ pre }}/contact/" data-i18n="nav-contact">{{ l_contact }}</a>
+    {% include langs.html %}
   </nav>
 </header>
